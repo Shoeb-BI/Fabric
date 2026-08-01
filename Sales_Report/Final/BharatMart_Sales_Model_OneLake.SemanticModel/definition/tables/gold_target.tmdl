@@ -1,0 +1,62 @@
+table gold_target
+	lineageTag: a4b121ce-4717-4d61-a7a4-2617ab1e0f40
+	sourceLineageTag: [dbo].[gold_target]
+
+	column sk_target
+		dataType: int64
+		formatString: 0
+		lineageTag: 748bdcd3-9d69-4da1-bd3f-acbaae9169b5
+		sourceLineageTag: sk_target
+		summarizeBy: sum
+		sourceColumn: sk_target
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 2c4c1d87-2014-475c-b89e-972bac386942
+		sourceLineageTag: store_id
+		summarizeBy: none
+		sourceColumn: store_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column month
+		dataType: int64
+		formatString: 0
+		lineageTag: da5ddaea-1df6-4ecf-a64a-eafff3547707
+		sourceLineageTag: month
+		summarizeBy: sum
+		sourceColumn: month
+
+		annotation SummarizationSetBy = Automatic
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: 0b7ef981-21ba-4a86-991c-ae16451dffeb
+		sourceLineageTag: year
+		summarizeBy: sum
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column target_amount
+		dataType: double
+		lineageTag: ff710dae-7868-4cf2-8fd7-a2038340adf7
+		sourceLineageTag: target_amount
+		summarizeBy: sum
+		sourceColumn: target_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition gold_target = entity
+		mode: directLake
+		source
+			entityName: gold_target
+			schemaName: dbo
+			expressionSource: 'DirectLake - Final_WH_Gold'
+

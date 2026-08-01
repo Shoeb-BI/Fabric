@@ -1,0 +1,21 @@
+relationship 2ba8ac02-5bd1-8d37-41c2-1995b326f29d
+	fromColumn: gold_target.store_id
+	toColumn: gold_stores.store_id
+
+relationship 1120c439-bdf5-3064-8a90-13ec58505689
+	crossFilteringBehavior: bothDirections
+	fromColumn: gold_sales.customer_id
+	toColumn: gold_customer.sk_customer
+
+relationship d2db3eb5-114b-8753-fdad-4a4b730e069b
+	fromColumn: gold_sales.product_id
+	toColumn: gold_products.sk_product
+
+relationship c1d23f7b-d915-ea23-826a-fb212c0fc0a8
+	fromColumn: gold_sales.store_id
+	toColumn: gold_stores.sk_store
+
+relationship cd08157f-6fa8-ed85-13b5-5bc61ce9a762
+	fromColumn: gold_sales.sale_date
+	toColumn: calendar.Date
+

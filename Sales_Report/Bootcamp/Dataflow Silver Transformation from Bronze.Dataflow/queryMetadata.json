@@ -1,0 +1,78 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {
+    "allowModernEvaluationEngine": true
+  },
+  "name": "Dataflow Silver Transformation from Bronze",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "dim_customers": {
+      "queryId": "91c23c8e-d812-4e54-91b1-f7889e3b0287",
+      "queryName": "dim_customers",
+      "loadEnabled": false
+    },
+    "dim_products": {
+      "queryId": "5589582e-4a3f-47d9-964a-791c557f4a6b",
+      "queryName": "dim_products",
+      "loadEnabled": false
+    },
+    "dim_stores": {
+      "queryId": "619d1d02-85bc-4072-9e5d-82f0ec1f1d44",
+      "queryName": "dim_stores",
+      "loadEnabled": false
+    },
+    "dim_targets": {
+      "queryId": "138a8f46-9951-49ab-ba06-35e4ab88bd2d",
+      "queryName": "dim_targets",
+      "loadEnabled": false
+    },
+    "fact_sales": {
+      "queryId": "93732483-9706-4f77-a5c7-51152abfbcf4",
+      "queryName": "fact_sales",
+      "loadEnabled": false
+    },
+    "dim_customers_DataDestination": {
+      "queryId": "38e8ef07-6683-4644-a615-0e22face8b4f",
+      "queryName": "dim_customers_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "dim_products_DataDestination": {
+      "queryId": "75419132-7f28-467b-97bf-873c7593836b",
+      "queryName": "dim_products_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "dim_stores_DataDestination": {
+      "queryId": "ee6e2686-d85d-4382-9312-edc196f18b6d",
+      "queryName": "dim_stores_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "dim_targets_DataDestination": {
+      "queryId": "0f187c8c-cfe1-41ed-9eae-420bdf6636be",
+      "queryName": "dim_targets_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "fact_sales_DataDestination": {
+      "queryId": "efbb6a17-4d95-4c6f-8c20-fa191507a8c8",
+      "queryName": "fact_sales_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"4967bea0-f00c-4a59-ad03-031a1984aaaf\",\"DatasourceId\":\"aa9055a6-841f-4615-8eae-9689f8ad0bba\"}"
+    },
+    {
+      "path": "FabricAI",
+      "kind": "FabricAI",
+      "connectionId": "{\"ClusterId\":\"4967bea0-f00c-4a59-ad03-031a1984aaaf\",\"DatasourceId\":\"d00d5e76-d1e3-4a7f-8985-ef6e334f8c4b\"}"
+    }
+  ]
+}

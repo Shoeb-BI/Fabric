@@ -1,0 +1,68 @@
+table gold_stores
+	lineageTag: 5d979ef0-3bc1-4ca5-801b-31f2830b87bc
+	sourceLineageTag: [dbo].[gold_stores]
+
+	column sk_store
+		dataType: int64
+		formatString: 0
+		lineageTag: 19889a99-9829-4e63-9d63-f0b549fe1531
+		sourceLineageTag: sk_store
+		summarizeBy: sum
+		sourceColumn: sk_store
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 02799816-1fa9-408a-be8c-691e33817f8c
+		sourceLineageTag: store_id
+		summarizeBy: sum
+		sourceColumn: store_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_name
+		dataType: string
+		lineageTag: d87875e6-7d14-4341-9219-eaadd7eb867f
+		sourceLineageTag: store_name
+		summarizeBy: none
+		sourceColumn: store_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column zone
+		dataType: string
+		lineageTag: 9b6cb28d-3c07-42fc-b376-b448e6549f10
+		sourceLineageTag: zone
+		summarizeBy: none
+		sourceColumn: zone
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: 4aaca214-0c9f-40b1-91c8-3c55dc0cd6b9
+		sourceLineageTag: city
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column open_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 937c9fab-99e1-4a29-9f60-409e8acf2c39
+		sourceLineageTag: open_date
+		summarizeBy: none
+		sourceColumn: open_date
+
+		annotation SummarizationSetBy = Automatic
+
+	partition gold_stores = entity
+		mode: directLake
+		source
+			entityName: gold_stores
+			schemaName: dbo
+			expressionSource: 'DirectLake - Final_WH_Gold'
+

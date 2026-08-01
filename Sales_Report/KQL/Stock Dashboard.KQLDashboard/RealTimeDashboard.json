@@ -1,0 +1,103 @@
+{
+  "schema_version": 77,
+  "flavor": "RTDashboard_Regular",
+  "tiles": [
+    {
+      "id": "9288efc8-872f-4ad6-91e0-93bb39553a65",
+      "title": "Average Prices",
+      "visualType": "column",
+      "pageId": "5e502f15-770b-4ca7-8ee9-f86471590de1",
+      "layout": {
+        "x": 0,
+        "y": 0,
+        "width": 8,
+        "height": 5
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "344d411f-3122-4227-9e6f-fbd4259a1bc1"
+      },
+      "visualOptions": {
+        "multipleYAxes": {
+          "base": {
+            "id": "-1",
+            "label": "",
+            "columns": [],
+            "yAxisMaximumValue": null,
+            "yAxisMinimumValue": null,
+            "yAxisScale": "linear",
+            "horizontalLines": []
+          },
+          "additional": [],
+          "showMultiplePanels": false
+        },
+        "seriesColors": {},
+        "hideLegend": false,
+        "legendLocation": "bottom",
+        "xColumnTitle": "",
+        "xColumn": null,
+        "yColumns": null,
+        "seriesColumns": null,
+        "xAxisScale": "linear",
+        "verticalLine": "",
+        "crossFilter": [],
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "forceAxisTicks": false,
+        "drillthrough": [],
+        "selectedDataOnLoad": {
+          "all": true,
+          "limit": 10
+        }
+      }
+    }
+  ],
+  "baseQueries": [],
+  "parameters": [
+    {
+      "kind": "duration",
+      "id": "7e8535ca-1a20-4b9f-9c6d-1d91ab81fbaa",
+      "displayName": "Time range",
+      "description": "",
+      "beginVariableName": "_startTime",
+      "endVariableName": "_endTime",
+      "defaultValue": {
+        "kind": "dynamic",
+        "count": 1,
+        "unit": "hours"
+      },
+      "showOnPages": {
+        "kind": "all"
+      }
+    }
+  ],
+  "dataSources": [
+    {
+      "id": "f5196ed7-4e72-4323-a1cb-4ca29364265f",
+      "kind": "kusto-trident",
+      "name": "EH_stock",
+      "clusterUri": "",
+      "databaseArtifactId": "911d70da-b8a6-44fb-a36f-e668e0e15dad",
+      "database": "e0e15dad-e668-a36f-44fb-b8a6911d70da",
+      "workspace": "00000000-0000-0000-0000-000000000000"
+    }
+  ],
+  "pages": [
+    {
+      "name": "Page 1",
+      "id": "5e502f15-770b-4ca7-8ee9-f86471590de1"
+    }
+  ],
+  "queries": [
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "f5196ed7-4e72-4323-a1cb-4ca29364265f"
+      },
+      "text": "stock\n| where ['time'] > ago(5m)  //filter\n| summarize avgprice = avg(todecimal(bidPrice)) by symbol  // aggregation\n| project symbol,avgprice //show column",
+      "id": "344d411f-3122-4227-9e6f-fbd4259a1bc1",
+      "usedVariables": []
+    }
+  ],
+  "embeddedApps": []
+}

@@ -1,0 +1,93 @@
+table gold_sales
+	lineageTag: 36aaabb5-2e97-4e89-8526-24974c1be949
+	sourceLineageTag: [dbo].[gold_sales]
+
+	column sale_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b5addcf2-11f7-4772-b797-12c34d0be35e
+		sourceLineageTag: sale_date
+		summarizeBy: none
+		sourceColumn: sale_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 67775234-d08c-4624-ad1d-f13624b64a72
+		sourceLineageTag: quantity
+		summarizeBy: sum
+		sourceColumn: quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column amount
+		dataType: double
+		lineageTag: d3eb5014-f1bb-466c-8edb-2bbc93ab6fda
+		sourceLineageTag: amount
+		summarizeBy: sum
+		sourceColumn: amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column sale_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 40979bd4-080d-4380-accd-068c43482b17
+		sourceLineageTag: sale_id
+		summarizeBy: sum
+		sourceColumn: sale_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 892e6d2c-0bf8-4ba8-b5ed-7b3016158c92
+		sourceLineageTag: customer_id
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 7232cbc3-8002-48ba-8766-2f699ade995d
+		sourceLineageTag: product_id
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 951af733-dc3f-4fc8-8b91-0cf196986dc6
+		sourceLineageTag: store_id
+		summarizeBy: none
+		sourceColumn: store_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column unit_price
+		dataType: double
+		lineageTag: 7bd114fe-e304-4e28-ae56-d07450b5277d
+		sourceLineageTag: unit_price
+		summarizeBy: sum
+		sourceColumn: unit_price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition gold_sales = entity
+		mode: directLake
+		source
+			entityName: gold_sales
+			schemaName: dbo
+			expressionSource: 'DirectLake - Final_WH_Gold'
+

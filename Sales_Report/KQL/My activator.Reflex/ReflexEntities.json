@@ -1,0 +1,154 @@
+[
+  {
+    "uniqueIdentifier": "b222dbe9-7617-4206-bd00-e9c6698b1c58",
+    "payload": {
+      "name": "Stock Dashboard",
+      "description": "Container Description",
+      "type": "kqlQueries"
+    },
+    "type": "container-v1"
+  },
+  {
+    "uniqueIdentifier": "a7ed2614-fffe-4409-803d-0c5a09562c47",
+    "payload": {
+      "name": "EH_stock event",
+      "runSettings": {
+        "executionIntervalInSeconds": 300
+      },
+      "query": {
+        "queryString": "stock\n| where ['time'] > ago(5m)  //filter\n| summarize avgprice = avg(todecimal(bidPrice)) by symbol  // aggregation\n| project symbol,avgprice //show column"
+      },
+      "eventhouseItem": {
+        "itemId": "e0e15dad-e668-a36f-44fb-b8a6911d70da",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemType": "KustoDatabase"
+      },
+      "queryParameters": [],
+      "metadata": {
+        "workspaceId": "d1847af3-63f2-4cdb-ac61-879503d263b2",
+        "dashboardId": "c398ebfc-13bc-4092-b869-8f766379d60c",
+        "visualId": "9288efc8-872f-4ad6-91e0-93bb39553a65"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "b222dbe9-7617-4206-bd00-e9c6698b1c58"
+      }
+    },
+    "type": "kqlSource-v1"
+  },
+  {
+    "uniqueIdentifier": "e66d511d-e186-4a55-97b8-5dddf3ab0ca6",
+    "payload": {
+      "name": "EH_stock event",
+      "parentContainer": {
+        "targetUniqueIdentifier": "b222dbe9-7617-4206-bd00-e9c6698b1c58"
+      },
+      "definition": {
+        "type": "Event",
+        "instance": "{\"steps\":[{\"id\":\"6ed8218d-c7e5-4e3e-8078-eda6c7da27ba\",\"name\":\"SourceEventStep\",\"rows\":[{\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"a7ed2614-fffe-4409-803d-0c5a09562c47\"}],\"kind\":\"SourceReference\",\"name\":\"SourceSelector\"}]}],\"templateId\":\"SourceEvent\",\"templateVersion\":\"1.3.0\"}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "7287b475-f06b-423c-9c94-5e9d5b4ac806",
+    "payload": {
+      "name": "symbol",
+      "parentContainer": {
+        "targetUniqueIdentifier": "b222dbe9-7617-4206-bd00-e9c6698b1c58"
+      },
+      "definition": {
+        "type": "Object"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "1d5a24cc-220a-4f74-a075-add3a79ea648",
+    "payload": {
+      "name": "symbol",
+      "parentObject": {
+        "targetUniqueIdentifier": "7287b475-f06b-423c-9c94-5e9d5b4ac806"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "b222dbe9-7617-4206-bd00-e9c6698b1c58"
+      },
+      "definition": {
+        "type": "Attribute",
+        "instance": "{\"steps\":[{\"id\":\"3323c411-dc91-46ee-8ba5-99714c9a4463\",\"name\":\"IdPartStep\",\"rows\":[{\"arguments\":[{\"name\":\"op\",\"type\":\"string\",\"value\":\"Text\"},{\"name\":\"format\",\"type\":\"string\",\"value\":\"\"}],\"kind\":\"TypeAssertion\",\"name\":\"TypeAssertion\"}]}],\"templateId\":\"IdentityPartAttribute\",\"templateVersion\":\"1.3.0\"}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "157caabd-dd85-4ef7-bcf0-da6df02f54a6",
+    "payload": {
+      "name": "symbol",
+      "parentObject": {
+        "targetUniqueIdentifier": "7287b475-f06b-423c-9c94-5e9d5b4ac806"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "b222dbe9-7617-4206-bd00-e9c6698b1c58"
+      },
+      "definition": {
+        "type": "Attribute",
+        "instance": "{\"steps\":[{\"id\":\"c5b1b0b1-e7a1-4acd-b849-3dbd808832fc\",\"name\":\"IdStructureStep\",\"rows\":[{\"arguments\":[{\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"1d5a24cc-220a-4f74-a075-add3a79ea648\"}],\"kind\":\"AttributeReference\",\"name\":\"idPart\",\"type\":\"complex\"}],\"kind\":\"IdPart\",\"name\":\"IdPart\"}]}],\"templateId\":\"IdentityTupleAttribute\",\"templateVersion\":\"1.3.0\"}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "cce5f781-b88d-4896-b60f-716ed1818bf2",
+    "payload": {
+      "name": "EH_stock event",
+      "parentObject": {
+        "targetUniqueIdentifier": "7287b475-f06b-423c-9c94-5e9d5b4ac806"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "b222dbe9-7617-4206-bd00-e9c6698b1c58"
+      },
+      "definition": {
+        "type": "Event",
+        "instance": "{\"steps\":[{\"id\":\"2c4d420d-e4b4-4a40-b448-c109d8902dbb\",\"name\":\"SplitEventStep\",\"rows\":[{\"arguments\":[{\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"e66d511d-e186-4a55-97b8-5dddf3ab0ca6\"}],\"kind\":\"EventReference\",\"name\":\"event\",\"type\":\"complex\"}],\"kind\":\"Event\",\"name\":\"EventSelector\"},{\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"symbol\"},{\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"1d5a24cc-220a-4f74-a075-add3a79ea648\"}],\"kind\":\"AttributeReference\",\"name\":\"idPart\",\"type\":\"complex\"}],\"kind\":\"FieldIdMapping\",\"name\":\"FieldIdMapping\"},{\"arguments\":[{\"name\":\"isAuthoritative\",\"type\":\"boolean\",\"value\":true}],\"kind\":\"EventOptions\",\"name\":\"SplitEventOptions\"}]}],\"templateId\":\"SplitEvent\",\"templateVersion\":\"1.3.0\"}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "3ce7eae9-db47-48ad-be38-1913db51112b",
+    "payload": {
+      "name": "avgprice",
+      "parentObject": {
+        "targetUniqueIdentifier": "7287b475-f06b-423c-9c94-5e9d5b4ac806"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "b222dbe9-7617-4206-bd00-e9c6698b1c58"
+      },
+      "definition": {
+        "type": "Attribute",
+        "instance": "{\"steps\":[{\"id\":\"04f9f471-c47d-43bd-84d3-ddc75554cebc\",\"name\":\"EventSelectStep\",\"rows\":[{\"arguments\":[{\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"cce5f781-b88d-4896-b60f-716ed1818bf2\"}],\"kind\":\"EventReference\",\"name\":\"event\",\"type\":\"complex\"}],\"kind\":\"Event\",\"name\":\"EventSelector\"},{\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"avgprice\"}],\"kind\":\"EventField\",\"name\":\"EventFieldSelector\"}]},{\"id\":\"08bb4256-6dcc-4807-8a56-56181577a572\",\"name\":\"EventComputeStep\",\"rows\":[{\"arguments\":[{\"name\":\"op\",\"type\":\"string\",\"value\":\"Text\"},{\"name\":\"format\",\"type\":\"string\",\"value\":\"\"}],\"kind\":\"TypeAssertion\",\"name\":\"TypeAssertion\"}]}],\"templateId\":\"BasicEventAttribute\",\"templateVersion\":\"1.3.0\"}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "90a4dd14-cf11-43cf-b3ba-ac9ca8e92f27",
+    "payload": {
+      "name": "First Alert",
+      "parentObject": {
+        "targetUniqueIdentifier": "7287b475-f06b-423c-9c94-5e9d5b4ac806"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "b222dbe9-7617-4206-bd00-e9c6698b1c58"
+      },
+      "definition": {
+        "type": "Rule",
+        "instance": "{\"templateId\":\"AttributeTrigger\",\"templateVersion\":\"1.3.0\",\"steps\":[{\"name\":\"ScalarSelectStep\",\"id\":\"9ac42865-19f5-4bd6-94e7-490ffcc5bf4f\",\"rows\":[{\"name\":\"AttributeSelector\",\"kind\":\"Attribute\",\"arguments\":[{\"kind\":\"AttributeReference\",\"type\":\"complex\",\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"3ce7eae9-db47-48ad-be38-1913db51112b\"}],\"name\":\"attribute\"}]}]},{\"name\":\"ScalarDetectStep\",\"id\":\"317b8679-2d10-40a5-b5e9-382081a2294f\",\"rows\":[{\"name\":\"NumberTrends\",\"kind\":\"NumberTrendsBy\",\"arguments\":[{\"name\":\"op\",\"type\":\"string\",\"value\":\"IncreasesByAtLeast\"},{\"name\":\"offset\",\"type\":\"number\",\"value\":100.0},{\"name\":\"inPercent\",\"type\":\"boolean\",\"value\":false}]},{\"name\":\"OccurrenceOption\",\"kind\":\"EachTime\",\"arguments\":[]}]},{\"name\":\"ActStep\",\"id\":\"bb0290de-b113-4702-8b98-10bd1df33774\",\"rows\":[{\"name\":\"TeamsBinding\",\"kind\":\"TeamsMessage\",\"arguments\":[{\"name\":\"messageLocale\",\"type\":\"string\",\"value\":\"en-us\"},{\"name\":\"recipients\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"mohammadshoeb@fabricbootcamp.onmicrosoft.com\"}]},{\"name\":\"headline\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"Activator alert First Alert\"}]},{\"name\":\"optionalMessage\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"The condition for 'First Alert' has been met\"}]},{\"name\":\"additionalInformation\",\"type\":\"array\",\"values\":[]}]}]}]}",
+        "settings": {
+          "shouldRun": true,
+          "shouldApplyRuleOnUpdate": false
+        }
+      }
+    },
+    "type": "timeSeriesView-v1"
+  }
+]

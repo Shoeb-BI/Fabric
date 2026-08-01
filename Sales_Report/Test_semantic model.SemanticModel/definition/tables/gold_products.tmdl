@@ -1,0 +1,60 @@
+table gold_products
+	lineageTag: f2e0d3ef-900d-4005-adc5-556a7a4f7138
+	sourceLineageTag: [dbo].[gold_products]
+
+	column sk_product
+		dataType: int64
+		formatString: 0
+		lineageTag: 91b4fa11-dbfd-4c6a-bf47-4a4ee6b837cd
+		sourceLineageTag: sk_product
+		summarizeBy: none
+		sourceColumn: sk_product
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 47495016-0cd2-4487-93d2-b48f3653239d
+		sourceLineageTag: product_id
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_name
+		dataType: string
+		lineageTag: 3c7bfd1a-17fd-426f-9a73-5c37767c8dba
+		sourceLineageTag: product_name
+		summarizeBy: none
+		sourceColumn: product_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		lineageTag: e6313ca8-e4ad-49ef-bc7b-40504b979e05
+		sourceLineageTag: category
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column price
+		dataType: double
+		lineageTag: febf76d6-3d49-4c03-87a5-9be2dffbdd17
+		sourceLineageTag: price
+		summarizeBy: none
+		sourceColumn: price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition gold_products = entity
+		mode: directLake
+		source
+			entityName: gold_products
+			schemaName: dbo
+			expressionSource: 'DirectLake - Final_WH_Gold'
+

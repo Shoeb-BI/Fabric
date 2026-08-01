@@ -1,0 +1,110 @@
+table gold_sales
+	lineageTag: 37816dcf-2a6a-40d3-90ae-9cf10a89636e
+	sourceLineageTag: [dbo].[gold_sales]
+
+	measure 'Revenue LY' = CALCULATE ( SUM(gold_sales[amount]), SAMEPERIODLASTYEAR ( 'calendar'[Date] ) )
+		lineageTag: 61c4aece-0225-45f2-be7c-316c5a7de852
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column sale_id
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: eed4afdc-541e-4a0c-b7de-39998d322c96
+		sourceLineageTag: sale_id
+		summarizeBy: sum
+		sourceColumn: sale_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: df1183cb-5ca9-4f89-9af4-e34cd23d4ac4
+		sourceLineageTag: customer_id
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_id
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 6e67f503-bc63-4261-91bc-20f4f9ee7db0
+		sourceLineageTag: product_id
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_id
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 40a63d08-a3e1-403a-a9e0-4f37a8096ad8
+		sourceLineageTag: store_id
+		summarizeBy: none
+		sourceColumn: store_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column sale_date
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: eaf3b397-997f-4d96-9042-df62d679e43d
+		sourceLineageTag: sale_date
+		summarizeBy: none
+		sourceColumn: sale_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column quantity
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 1f7b6a94-22d0-495d-af5d-33ccf5f1d99c
+		sourceLineageTag: quantity
+		summarizeBy: sum
+		sourceColumn: quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column unit_price
+		dataType: double
+		sourceProviderType: decimal(18, 2)
+		lineageTag: 19c24bf3-7f0b-4ad0-9e3a-8170b11920cb
+		sourceLineageTag: unit_price
+		summarizeBy: sum
+		sourceColumn: unit_price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column amount
+		dataType: double
+		sourceProviderType: decimal(18, 2)
+		lineageTag: 26159a62-0190-4861-bd84-283ecbd03df7
+		sourceLineageTag: amount
+		summarizeBy: sum
+		sourceColumn: amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition gold_sales = entity
+		mode: directLake
+		source
+			entityName: gold_sales
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

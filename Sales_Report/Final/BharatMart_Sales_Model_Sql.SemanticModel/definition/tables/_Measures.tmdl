@@ -1,0 +1,230 @@
+table _Measures
+	lineageTag: 6ad7455e-c732-4200-b2a5-b66ab5ab227a
+
+	measure 'Total Sales' =
+			
+			SUM(gold_sales[amount])
+		lineageTag: 07eb962f-5f2c-4cdf-9bd5-d21c4f8cba90
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Quantity' =
+			
+			SUM(gold_sales[quantity])
+		formatString: 0
+		lineageTag: 2671043e-317f-4303-a48e-6f6266484084
+
+	measure 'Total Orders' =
+			
+			DISTINCTCOUNT(gold_sales[sale_id])
+		formatString: 0
+		lineageTag: 3b39c6d4-a5b4-47ea-9edb-54d61ea7958c
+
+	measure 'Average Order Value' =
+			
+			DIVIDE([Total Sales],[Total Orders])
+		lineageTag: 87684c53-0011-47fe-9966-9b7c62881082
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average Selling Price' =
+			
+			DIVIDE([Total Sales],[Total Quantity])
+		lineageTag: baa650c6-5211-4ebd-a59b-0a671af104ca
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Customers' = ```
+			
+			DISTINCTCOUNT(gold_customer[customer_id])
+			
+			```
+		formatString: 0
+		lineageTag: b03d8587-66d8-4372-9c26-99dcf76e536e
+
+	measure 'Customers Purchased' = ```
+			
+			DISTINCTCOUNT(gold_sales[customer_id])
+			
+			```
+		formatString: 0
+		lineageTag: ed9d140a-37f9-469a-a44e-b1895145ce31
+
+	measure 'Revenue per Customer' =
+			
+			DIVIDE([Total Sales],[Customers Purchased])
+		lineageTag: 771392d3-1b70-42ce-8851-7c1ffe5e272f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Products' = ```
+			
+			DISTINCTCOUNT(gold_products[product_id])
+			
+			```
+		formatString: 0
+		lineageTag: d3187037-2eff-4bfc-be88-52cd84d11609
+
+	measure 'Products Sold' =
+			
+			DISTINCTCOUNT(gold_sales[product_id])
+		formatString: 0
+		lineageTag: 713454ae-9565-43f9-9375-d4d851b19521
+
+	measure 'Total Stores' = ```
+			
+			DISTINCTCOUNT(gold_stores[store_id])
+			
+			```
+		formatString: 0
+		lineageTag: 424a628d-6b71-4ebd-9606-19189d33d129
+
+	measure 'Sales per Store' =
+			
+			DIVIDE([Total Sales],[Total Stores])
+		lineageTag: 4b9ae37d-b932-4f08-8771-25cddfb9ab07
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales YTD' =
+			
+			TOTALYTD(
+			    [Total Sales],
+			    Calendar[Date]
+			)
+		lineageTag: 3dc4ea94-5247-4304-8022-85ffab9e7586
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales MTD' =
+			
+			TOTALMTD(
+			    [Total Sales],
+			    Calendar[Date]
+			)
+		lineageTag: 08166cf1-af13-464e-afd6-0571e4e91ecb
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales QTD' =
+			
+			TOTALQTD(
+			    [Total Sales],
+			    Calendar[Date]
+			)
+		lineageTag: 2f6d5267-718d-44db-b454-8f3f68655fdb
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales PY' =
+			
+			CALCULATE(
+			    [Total Sales],
+			    SAMEPERIODLASTYEAR(Calendar[Date])
+			)
+		lineageTag: 7f66baef-f8ab-449d-a7e1-afd739be62bf
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'YoY Growth %' =
+			
+			DIVIDE(
+			    [Total Sales]-[Sales PY],
+			    [Sales PY]
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: a072c26b-2ec7-43e6-a4b7-365eee91d329
+
+	measure 'Sales Previous Month' =
+			
+			CALCULATE(
+			    [Total Sales],
+			    DATEADD(Calendar[Date],-1,MONTH)
+			)
+		lineageTag: 37bed272-22a6-4e83-a69e-ae4256db353f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'MoM Growth %' =
+			
+			DIVIDE(
+			    [Total Sales]-[Sales Previous Month],
+			    [Sales Previous Month]
+			)
+		lineageTag: 3e5bfc6b-ee99-47c0-9b0b-d7ddf6d236d0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average Customer Spend' =
+			
+			DIVIDE(
+			    [Total Sales],
+			    [Customers Purchased]
+			)
+		lineageTag: 589b8e41-5fdc-4aa2-8216-33b2b0d00a8e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Customer Orders' =
+			
+			DISTINCTCOUNT(gold_sales[sale_id])
+		formatString: 0
+		lineageTag: 68877a6c-e4b2-4f65-a02c-014d917bc331
+
+	measure 'Avg Qty per Customer' =
+			
+			DIVIDE(
+			    [Total Quantity],
+			    [Customers Purchased]
+			)
+		lineageTag: 16951522-dca0-495a-ab30-b2e13de955a7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Product Sales' =
+			
+			[Total Sales]
+		lineageTag: 083b419c-0897-463b-8d59-e92485bc86f0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average Product Price' =
+			
+			AVERAGE(gold_products[price])
+		lineageTag: 17f1527b-00bd-4e65-acde-968a1581b402
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Product Quantity' =
+			
+			SUM(gold_sales[quantity])
+		formatString: 0
+		lineageTag: 4db78904-b1fa-4885-be64-bbf32fb7a906
+
+	measure 'Contribution %' =
+			
+			DIVIDE(
+			    [Total Sales],
+			    CALCULATE(
+			        [Total Sales],
+			        ALL(gold_products)
+			    )
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 509e6493-1512-44ca-8426-52b737b3e681
+
+	column KPI
+		isHidden
+		lineageTag: 6d000b9b-fe62-48c1-a47d-6fbe1926dc3e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [KPI]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = calculated
+		mode: import
+		source = DATATABLE("KPI", STRING, {{"Placeholder"}})
+
+	annotation PBI_Id = a648a65fe1364cde802171abf9d3ed9d
+

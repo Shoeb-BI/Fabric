@@ -1,0 +1,67 @@
+table gold_products
+	lineageTag: c0d37ab7-b537-43cd-87c0-1717b7eca380
+	sourceLineageTag: [dbo].[gold_products]
+
+	column sk_product
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 25781a3b-43e1-4489-a1f4-19037e03a882
+		sourceLineageTag: sk_product
+		summarizeBy: none
+		sourceColumn: sk_product
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_id
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: fc84741d-1531-4377-aaa8-c9b4212943dd
+		sourceLineageTag: product_id
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_name
+		dataType: string
+		sourceProviderType: varchar(150)
+		lineageTag: bf3a50ca-fbb9-4d74-b2fb-58d1d6bc0050
+		sourceLineageTag: product_name
+		summarizeBy: none
+		sourceColumn: product_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		sourceProviderType: varchar(80)
+		lineageTag: 54601cff-a254-43af-9b0b-979d3884ca41
+		sourceLineageTag: category
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column price
+		dataType: double
+		sourceProviderType: decimal(18, 2)
+		lineageTag: 1894898c-c089-4f34-82b8-68cf9fed17b5
+		sourceLineageTag: price
+		summarizeBy: none
+		sourceColumn: price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition gold_products = entity
+		mode: directLake
+		source
+			entityName: gold_products
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+
