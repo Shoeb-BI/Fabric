@@ -1,0 +1,68 @@
+table gold_customer
+	lineageTag: 9ba730d4-faea-406d-a573-50362ebbf90d
+	sourceLineageTag: [dbo].[gold_customer]
+
+	column sk_customer
+		dataType: int64
+		formatString: 0
+		lineageTag: 0ea436d7-db33-472a-89d6-c28fe80e4a99
+		sourceLineageTag: sk_customer
+		summarizeBy: none
+		sourceColumn: sk_customer
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: int64
+		formatString: 0
+		lineageTag: e70d042d-1027-492d-8050-2696f2702177
+		sourceLineageTag: customer_id
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_name
+		dataType: string
+		lineageTag: 5cc7a30e-9192-409b-8688-9be706142d32
+		sourceLineageTag: customer_name
+		summarizeBy: none
+		sourceColumn: customer_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column email
+		dataType: string
+		lineageTag: dccb6687-a9d1-4f74-967a-179bdfa0bddd
+		sourceLineageTag: email
+		summarizeBy: none
+		sourceColumn: email
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: 8e29634c-3eaa-42c8-8ecb-5d983c13851f
+		sourceLineageTag: city
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column birth_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: bccacb65-f136-472f-afe6-22c722888852
+		sourceLineageTag: birth_date
+		summarizeBy: none
+		sourceColumn: birth_date
+
+		annotation SummarizationSetBy = Automatic
+
+	partition gold_customer = entity
+		mode: directLake
+		source
+			entityName: gold_customer
+			schemaName: dbo
+			expressionSource: 'DirectLake - Final_WH_Gold'
+

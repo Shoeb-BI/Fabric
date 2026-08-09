@@ -1,0 +1,8 @@
+relationship 530fe757-837c-f220-c5a9-f67c6a8a14ca
+	fromColumn: gold_sales.customer_id
+	toColumn: gold_customer.customer_id
+
+relationship fa3e06c3-8eab-6abe-3047-4f2cb64c0529
+	fromColumn: gold_sales.product_id
+	toColumn: gold_products.sk_product
+

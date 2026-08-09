@@ -1,0 +1,155 @@
+table calendar
+	lineageTag: 457c5039-f299-47c2-9abe-66d42c0e3106
+	sourceLineageTag: [dbo].[calendar]
+
+	column DateKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 06b1ea90-5a85-4914-be89-fedba944a916
+		sourceLineageTag: DateKey
+		summarizeBy: none
+		sourceColumn: DateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: a2e3d928-b158-4d6e-8aff-cf2924320974
+		sourceLineageTag: Date
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: e8009809-7b13-40f5-80d7-dbb233e7eb50
+		sourceLineageTag: Year
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthNo
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 9f8080ac-301c-4627-adc1-ba61367b65bd
+		sourceLineageTag: MonthNo
+		summarizeBy: none
+		sourceColumn: MonthNo
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthName
+		dataType: string
+		sourceProviderType: varchar(3)
+		lineageTag: a0b80ee5-4a2e-4080-a1b5-ae94117b3419
+		sourceLineageTag: MonthName
+		summarizeBy: none
+		sourceColumn: MonthName
+		sortByColumn: MonthNo
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthYear
+		dataType: string
+		sourceProviderType: varchar(8)
+		lineageTag: b7b99530-df5d-4d1d-89a7-bd57a0631a05
+		sourceLineageTag: MonthYear
+		summarizeBy: none
+		sourceColumn: MonthYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthYearSort
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 347b3471-9c1b-4d3b-9b3f-dc2fa0cafc06
+		sourceLineageTag: MonthYearSort
+		summarizeBy: none
+		sourceColumn: MonthYearSort
+
+		annotation SummarizationSetBy = Automatic
+
+	column CalQuarter
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 30bd06b0-d0f5-422e-ab35-c6102e731ad2
+		sourceLineageTag: CalQuarter
+		summarizeBy: none
+		sourceColumn: CalQuarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column FiscalYearStart
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: a4eb8d32-2725-4439-81dd-43d7d44d862f
+		sourceLineageTag: FiscalYearStart
+		summarizeBy: none
+		sourceColumn: FiscalYearStart
+
+		annotation SummarizationSetBy = Automatic
+
+	column FiscalYear
+		dataType: string
+		sourceProviderType: varchar(10)
+		lineageTag: 75af6c77-b6f0-40fa-96cd-2b61f5a85bbf
+		sourceLineageTag: FiscalYear
+		summarizeBy: none
+		sourceColumn: FiscalYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column FiscalMonthNo
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 9b1916d3-079e-4c6a-8dde-a58f589615a8
+		sourceLineageTag: FiscalMonthNo
+		summarizeBy: none
+		sourceColumn: FiscalMonthNo
+
+		annotation SummarizationSetBy = Automatic
+
+	column FiscalQuarterNo
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 77ccbad8-21ec-40ed-802e-1a35d50f241b
+		sourceLineageTag: FiscalQuarterNo
+		summarizeBy: none
+		sourceColumn: FiscalQuarterNo
+
+		annotation SummarizationSetBy = Automatic
+
+	column FiscalQuarter
+		dataType: string
+		sourceProviderType: varchar(2)
+		lineageTag: ea98314f-ad25-47ec-ba7e-b4c82c2cad04
+		sourceLineageTag: FiscalQuarter
+		summarizeBy: none
+		sourceColumn: FiscalQuarter
+
+		annotation SummarizationSetBy = Automatic
+
+	partition calendar = entity
+		mode: directLake
+		source
+			entityName: calendar
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

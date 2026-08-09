@@ -1,0 +1,76 @@
+table gold_customer
+	lineageTag: 125b08c4-d273-40df-a239-85c1dd9f245a
+	sourceLineageTag: [dbo].[gold_customer]
+
+	column sk_customer
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 74d1af2f-81f8-43b0-9a72-c29d8a7a208f
+		sourceLineageTag: sk_customer
+		summarizeBy: none
+		sourceColumn: sk_customer
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 87decb2d-f422-449a-93b6-fdf5a58ca0cc
+		sourceLineageTag: customer_id
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_name
+		dataType: string
+		sourceProviderType: varchar(150)
+		lineageTag: a391e58b-753a-444e-b243-ec1b929c2d15
+		sourceLineageTag: customer_name
+		summarizeBy: none
+		sourceColumn: customer_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column email
+		dataType: string
+		sourceProviderType: varchar(150)
+		lineageTag: d57a9477-5038-4b18-bd0b-3f72a40be72f
+		sourceLineageTag: email
+		summarizeBy: none
+		sourceColumn: email
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		sourceProviderType: varchar(80)
+		lineageTag: 17b7a845-978e-4fd6-a54a-5ff0a547b9bf
+		sourceLineageTag: city
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column birth_date
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 1646c1c7-a140-4fad-96eb-785a4fbc1e7d
+		sourceLineageTag: birth_date
+		summarizeBy: none
+		sourceColumn: birth_date
+
+		annotation SummarizationSetBy = Automatic
+
+	partition gold_customer = entity
+		mode: directLake
+		source
+			entityName: gold_customer
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

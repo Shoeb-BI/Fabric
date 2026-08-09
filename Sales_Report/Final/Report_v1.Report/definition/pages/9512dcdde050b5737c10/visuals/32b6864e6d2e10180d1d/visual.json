@@ -1,0 +1,93 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "32b6864e6d2e10180d1d",
+  "position": {
+    "x": 666.31497284716841,
+    "y": 8.9371605896043445,
+    "z": 2,
+    "height": 230.38013964313421,
+    "width": 226.40806826997672
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "gold_stores"
+                    }
+                  },
+                  "Property": "zone"
+                }
+              },
+              "queryRef": "gold_stores.zone",
+              "nativeQueryRef": "zone"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "gold_customer"
+                        }
+                      },
+                      "Property": "customer_id"
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "gold_customer.customer_id",
+              "nativeQueryRef": "Count of customer_id1"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "1256837f375e77901ade",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "gold_stores"
+              }
+            },
+            "Property": "zone"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "db032d15db8d34bdb29c",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "gold_customer"
+                  }
+                },
+                "Property": "customer_id"
+              }
+            },
+            "Function": 5
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

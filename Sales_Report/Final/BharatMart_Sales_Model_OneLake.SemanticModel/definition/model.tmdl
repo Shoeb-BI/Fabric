@@ -1,0 +1,23 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["DirectLake - Final_WH_Gold"]
+
+annotation PBI_ProTooling = ["DirectLakeOnOneLakeInWeb","WebModelingEdit"]
+
+ref table gold_customer
+ref table gold_products
+ref table gold_stores
+ref table gold_target
+ref table gold_sales
+ref table dim_date
+ref table DateTableTemplate_d74ea1d4-08c2-48a7-bab2-5e24fc3f770f
+ref table LocalDateTable_30947b98-2629-4ed8-ab48-3b8859cfda5a
+

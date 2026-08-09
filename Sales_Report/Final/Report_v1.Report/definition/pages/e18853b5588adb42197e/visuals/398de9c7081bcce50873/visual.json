@@ -1,0 +1,94 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "398de9c7081bcce50873",
+  "position": {
+    "x": 161.57082748948105,
+    "y": 80.785413744740524,
+    "z": 0,
+    "height": 206.00280504908835,
+    "width": 279.71949509116411,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "gold_stores"
+                    }
+                  },
+                  "Property": "zone"
+                }
+              },
+              "queryRef": "gold_stores.zone",
+              "nativeQueryRef": "zone"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "gold_customer"
+                        }
+                      },
+                      "Property": "sk_customer"
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "gold_customer.sk_customer",
+              "nativeQueryRef": "Count of sk_customer"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "23ca499ba9a99d70ec05",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "gold_stores"
+              }
+            },
+            "Property": "zone"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "76b9ceef8dc2cb6905cd",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "gold_customer"
+                  }
+                },
+                "Property": "sk_customer"
+              }
+            },
+            "Function": 5
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

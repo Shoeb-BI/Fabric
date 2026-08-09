@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "BharatMart_Sales_Model_Sql"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d5f89a1d-ea24-972f-451a-2e608ab4917e"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Dataflow",
+    "displayName": "GoogleDrive"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "97ab10a7-084d-a191-4398-55d54f963ecb"
+  }
+}

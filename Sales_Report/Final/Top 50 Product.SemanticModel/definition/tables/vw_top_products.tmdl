@@ -1,0 +1,45 @@
+table vw_top_products
+	lineageTag: 7f58b3ef-a36b-47e6-9ac2-59dd045c321e
+	sourceLineageTag: [dbo].[vw_top_products]
+
+	column product_name
+		dataType: string
+		sourceProviderType: varchar(150)
+		lineageTag: 827b0032-236f-432f-b3b3-624a52b2b794
+		sourceLineageTag: product_name
+		summarizeBy: none
+		sourceColumn: product_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		sourceProviderType: varchar(80)
+		lineageTag: 58947b3a-9b10-4e9f-838d-541c8e7cfafb
+		sourceLineageTag: category
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column revenue
+		dataType: double
+		sourceProviderType: decimal(38, 2)
+		lineageTag: cac4be95-db61-41e3-87ee-cfeb5ed7ab29
+		sourceLineageTag: revenue
+		summarizeBy: sum
+		sourceColumn: revenue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition vw_top_products = entity
+		mode: directLake
+		source
+			entityName: vw_top_products
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

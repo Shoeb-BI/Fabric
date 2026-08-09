@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Top 50 Product"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d0c3b2bf-d0b2-a26a-4b60-ff80a4a4bbc3"
+  }
+}
