@@ -1,0 +1,91 @@
+table sales
+	lineageTag: b6f5aed7-63f4-4440-a30d-f3c356c9ede9
+	sourceLineageTag: [dbo].[sales]
+
+	column SalesKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 05c5bcaf-9745-4676-b1b9-c927eb61b5a8
+		sourceLineageTag: SalesKey
+		summarizeBy: count
+		sourceColumn: SalesKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderDate
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: fbb58818-44c3-4bad-ac43-6e24959568d3
+		sourceLineageTag: OrderDate
+		summarizeBy: none
+		sourceColumn: OrderDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: acb7dd8e-dedb-485a-9395-ffa7688f1476
+		sourceLineageTag: CustomerKey
+		summarizeBy: count
+		sourceColumn: CustomerKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: b3c2ddbd-fbe4-449a-87c7-bdc2f771c325
+		sourceLineageTag: ProductKey
+		summarizeBy: count
+		sourceColumn: ProductKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 70cfb006-a783-4402-aea2-67cf95e7de96
+		sourceLineageTag: Quantity
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnitPrice
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 67dd7ca6-7d17-4053-8510-12aebe1b35bc
+		sourceLineageTag: UnitPrice
+		summarizeBy: sum
+		sourceColumn: UnitPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Sales
+		dataType: double
+		sourceProviderType: float
+		lineageTag: cfdf771f-5af8-4f0f-8256-59ad44a3bca8
+		sourceLineageTag: Sales
+		summarizeBy: sum
+		sourceColumn: Sales
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition sales = entity
+		mode: directLake
+		source
+			entityName: sales
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

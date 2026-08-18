@@ -1,0 +1,8 @@
+relationship sales_to_products
+	fromColumn: sales.ProductKey
+	toColumn: products.ProductKey
+
+relationship sales_to_customers
+	fromColumn: sales.CustomerKey
+	toColumn: customers.CustomerKey
+
